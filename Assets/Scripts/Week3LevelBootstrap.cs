@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace AppliedMath.Week3
 {
@@ -12,6 +13,11 @@ namespace AppliedMath.Week3
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         private static void BuildLevel()
         {
+            if (!SceneManager.GetActiveScene().name.StartsWith("Week3"))
+            {
+                return;
+            }
+
             if (Object.FindFirstObjectByType<ManualGameManager>() != null)
             {
                 return;

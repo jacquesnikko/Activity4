@@ -78,6 +78,53 @@ namespace AppliedMath.Week3
         public static GameVector2 Lerp(GameVector2 start, GameVector2 end, float t) =>
             start + (end - start) * t;
 
+        public static GameVector2 QuadraticBezier(
+            GameVector2 p0,
+            GameVector2 p1,
+            GameVector2 p2,
+            float t)
+        {
+            float clamped = Clamp01(t);
+            GameVector2 first = Lerp(p0, p1, clamped);
+            GameVector2 second = Lerp(p1, p2, clamped);
+            return Lerp(first, second, clamped);
+        }
+
+        public static GameVector2 CubicBezier(
+            GameVector2 p0,
+            GameVector2 p1,
+            GameVector2 p2,
+            GameVector2 p3,
+            float t)
+        {
+            float clamped = Clamp01(t);
+            GameVector2 a = Lerp(p0, p1, clamped);
+            GameVector2 b = Lerp(p1, p2, clamped);
+            GameVector2 c = Lerp(p2, p3, clamped);
+            GameVector2 d = Lerp(a, b, clamped);
+            GameVector2 e = Lerp(b, c, clamped);
+            return Lerp(d, e, clamped);
+        }
+
+        public static float EaseOutCubic(float t)
+        {
+            float clamped = Clamp01(t);
+            float inverse = 1f - clamped;
+            return 1f - inverse * inverse * inverse;
+        }
+
+        public static float EaseInOutCubic(float t)
+        {
+            float clamped = Clamp01(t);
+            if (clamped < 0.5f)
+            {
+                return 4f * clamped * clamped * clamped;
+            }
+
+            float value = -2f * clamped + 2f;
+            return 1f - value * value * value * 0.5f;
+        }
+
         public static float Dot(GameVector2 a, GameVector2 b) => a.x * b.x + a.y * b.y;
 
         public static float LengthSquared(GameVector2 value) => Dot(value, value);
