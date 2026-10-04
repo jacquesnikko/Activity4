@@ -43,3 +43,6 @@ The video should show both creature paths, a creature damaging the base, the gho
 If the empty scene asset needs to be recreated, use **Applied Mathematics > Build Week 4 Scene** from Unity's menu.
 
 The runtime bootstrap scripts construct the levels, visuals, LineRenderers, UI, spawners, towers, and game managers without Inspector configuration.
+
+VIDEO LINK
+https://drive.google.com/file/d/1oWEbkb3PjvbCxq2t88Dtw99urCwpqEU2/view?usp=sharing
