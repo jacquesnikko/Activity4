@@ -1,8 +1,6 @@
-# Applied Mathematics Activities 3 and 4
+# Applied Mathematics Activity 4 — Bézier Defense
 
-This Unity 6 project contains two connected assignments. Both scenes generate their gameplay objects from code and avoid Unity physics, colliders, triggers, Rigidbody movement, raycasts, NavMesh, and built-in interpolation helpers.
-
-## Activity 4 — Bézier Defense
+This Unity 6 project is a code-generated tower-defense demonstration. It uses manual Bézier interpolation and transform-based movement without Unity physics, colliders, triggers, Rigidbody movement, raycasts, NavMesh, `Vector3.MoveTowards`, or built-in interpolation helpers.
 
 Open `Assets/Scenes/Week4BezierDefense.unity` and press Play. This is the first scene in Build Settings.
 
@@ -12,7 +10,7 @@ Open `Assets/Scenes/Week4BezierDefense.unity` and press Play. This is the first 
 - The cyan lane uses a quadratic Bézier curve with three control points.
 - The pink lane uses a cubic Bézier curve with four control points and a double-arc path.
 - Creatures move by evaluating the Bézier equations and assigning `transform.position`.
-- The movable Week 3 player is absent. The towers now defend the shared target from creatures.
+- The player controls no movable character; the towers defend the shared target from invading creatures.
 - Flame, sniper, and shotgun towers fire transform-driven projectiles. One projectile hit kills a creature.
 - The base starts with 20 HP. Each creature that reaches it removes 1 HP.
 - The red HP bar updates immediately. The orange ghost layer pauses, then eases down with a manually implemented cubic ease-out function.
@@ -30,36 +28,18 @@ The important code is located in:
 - `Assets/Scripts/Week4GameManager.cs` — HP, creature resolution, and game state
 - `Assets/Scripts/Week4LevelBootstrap.cs` — complete code-generated demonstration scene
 
-### Activity 4 gameplay video
+### Gameplay video
 
 Google Drive link: **TODO — replace this text with the Activity 4 gameplay video link.**
 
 The video should show both creature paths, a creature damaging the base, the ghost HP animation, all three tower types killing creatures, a coin flying to the bank, the bank counting upward and punching, and the final game-state UI.
 
-## Activity 3 — Manual Turret Defense
-
-Open `Assets/Scenes/Week3TurretDefense.unity` and press Play.
-
-- Move with **WASD** or the **arrow keys**.
-- Reach the green goal on the right.
-- A projectile hit reloads the scene immediately.
-- The flame turret uses a manual cone check.
-- The sniper uses a manually calculated sight line.
-- The shotgun uses a manual cone and calculated pellet spread.
-
-### Activity 3 gameplay video
-
-Google Drive link: **TODO — replace this text with the Activity 3 gameplay video link.**
-
 ## Unity setup
 
 1. Open this directory with Unity **6000.3.14f1** or a compatible Unity 6 release.
-2. Open the scene for the activity being demonstrated.
+2. Open `Assets/Scenes/Week4BezierDefense.unity`.
 3. Press Play.
 
-If either empty scene asset needs to be recreated, use Unity's menu:
-
-- **Applied Mathematics > Build Week 3 Scene**
-- **Applied Mathematics > Build Week 4 Scene**
+If the empty scene asset needs to be recreated, use **Applied Mathematics > Build Week 4 Scene** from Unity's menu.
 
 The runtime bootstrap scripts construct the levels, visuals, LineRenderers, UI, spawners, towers, and game managers without Inspector configuration.
